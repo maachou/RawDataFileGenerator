@@ -1,0 +1,27 @@
+<data xsi:noNamespaceSchemaLocation="schema.xsd"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<totalrecords>50</totalrecords>
+	<fields>
+		<field>
+			<order>1</order>
+			<name>field_1</name>
+			<description>Description field 1</description>
+			<length>20</length>
+			<type>ALPHA</type>
+			<genproperties>
+				<valuepresence>always</valuepresence> 
+				<datalength>variable</datalength> 
+			</genproperties> 
+		</field>
+		<field>
+			<order>2</order>
+			<name>field_2</name>
+			<description>Description field 2</description>
+			<length>10</length>
+			<type>ALPHANUM</type>
+			<genproperties>
+				<valuepresence>random</valuepresence> 
+				<datalength>full</datalength> 
+			</genproperties> 
+		</field>		
+	</fields>
+</data>
