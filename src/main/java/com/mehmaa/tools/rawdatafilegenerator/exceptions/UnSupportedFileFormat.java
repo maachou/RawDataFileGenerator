@@ -10,6 +10,6 @@ package com.mehmaa.tools.rawdatafilegenerator.exceptions;
 public class UnSupportedFileFormat extends Exception {
 
     public UnSupportedFileFormat() {
-	super("Input file not supported");
+	super("Input file doesn't exist or is not an XML file type");
     }
 }

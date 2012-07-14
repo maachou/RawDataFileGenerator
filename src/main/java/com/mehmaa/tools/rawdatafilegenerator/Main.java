@@ -1,5 +1,6 @@
 package com.mehmaa.tools.rawdatafilegenerator;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -48,26 +49,25 @@ public class Main {
 	    commandLine = cmdLineGnuParser.parse(gnuOptions, commandLineArguments);
 	    if (commandLine.hasOption("s")) {
 		specFilePath = commandLine.getOptionValue('s');
+		File inputFile = new File(specFilePath);
+		if (inputFile.exists() && specFilePath.toLowerCase().endsWith(".xml")) {
+		    DataGeneratorTool generatorTool = new DataGeneratorTool(specFilePath);
+		    if (generatorTool.checkWellFormedness() && generatorTool.validateAgaintXsd()) {
+			Data model = generatorTool.getSpecModel();
+			if (model != null) {
+			    generatorTool.generateData(model);
+			}
+		    }
+		} else {
+		    throw new UnSupportedFileFormat();
+		}
 	    }
-	    DataGeneratorTool generatorTool;
-	    if (specFilePath != null && specFilePath.toLowerCase().endsWith(".xml")) {
-		generatorTool = new DataGeneratorTool(specFilePath);
-		LOG.debug("Cheking WellFormed-ness...");
-		generatorTool.checkWellFormedness();
-		LOG.debug("XSD validation of the input file...");
-		generatorTool.validateAgaintXsd();
-		LOG.debug("Converting the XML file to the equivalent Java Model..");
-		Data model = generatorTool.getSpecModel();
-		LOG.debug("Generating a file with the requested test data...");
-		generatorTool.generateData(model);
-	    } else
-		throw new UnSupportedFileFormat();
+
 	} catch (ParseException parseException) {
 	    System.err.println("Encountered exception while parsing the current command:\n"
 		    + parseException.getMessage());
-	} catch (UnSupportedFileFormat unsupportedFileException) {
-	    System.err.println("Encountered exception while parsing the current command:\n"
-		    + unsupportedFileException.getMessage());
+	} catch (UnSupportedFileFormat e) {
+	    e.printStackTrace();
 	}
     }
 
