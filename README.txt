@@ -2,7 +2,7 @@
 DESCRIPTION:
 ------------
 
-RawDataFileGenerator is a command line tool I used in one of my projects to generate test data that have specific format.
+RawDataFileGenerator is a command line tool I used in one of my projects to generate test data that have a specific format.
 The row definition is specified within an xml file that is passed as an input parameter.
 A row contains a list of field that can be:
 - NUM : Numerical values.
@@ -31,8 +31,10 @@ A row contains a list of field that can be:
 			<length>10</length>
 			<type>ALPHA</type>
 			<genproperties>
-				<valuepresence>always</valuepresence> <!-- always/ random / absent -->
-				<datalength>variable</datalength> <!-- none/full/variable -->
+				<valuepresence>always</valuepresence> 
+				<!-- always/ random / absent -->
+				<datalength>variable</datalength> 
+				<!-- none/full/variable -->
 			</genproperties> 
 		</field>
 		<field>
