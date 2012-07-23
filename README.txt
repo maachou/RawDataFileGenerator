@@ -1,1 +1,1 @@
-Please find the project description at http://maachou.github.com/RawDataFileGenerator/
+Please find the project description at <a href="http://maachou.github.com/RawDataFileGenerator/">http://maachou.github.com/RawDataFileGenerator/</a>
