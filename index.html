@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Raw data file generator by maachou</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Raw data file generator</h1>
+        <p>A simple command line tool to generate formatted test data</p>
+        <p class="view"><a href="https://github.com/maachou/RawDataFileGenerator">View the Project on GitHub <small>maachou/RawDataFileGenerator</small></a></p>
+        <ul>
+          <li><a href="https://github.com/maachou/RawDataFileGenerator/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/maachou/RawDataFileGenerator/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/maachou/RawDataFileGenerator">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>DESCRIPTION:</h2>
+
+<p>RawDataFileGenerator is a command line tool that generate test data with a specific format.
+The row definition is specified within an xml file that is passed as an input parameter.
+A row contains a list of field that can be:</p>
+
+<ul>
+<li>
+<strong>NUM</strong> : Numerical values.</li>
+<li>
+<strong>ALPHA</strong>: Alphabetical values.</li>
+<li>
+<strong>ALPHANUM</strong>: Alphanumeric values.</li>
+<li>
+<strong>DOMAIN_YES_NO</strong> : "YES"/"NO" string values.</li>
+<li>
+<strong>DOMAIN_GENDER</strong>: "Male"/"Female" string values.</li>
+</ul><h2>USAGE:</h2>
+
+<pre><code>java -jar target/RawDataFileGenerator.one-jar.jar -s /path/to/rowSpecFile.xml
+</code></pre>
+
+<h2>Row specification example:</h2>
+
+<div class="highlight">
+<pre> <span class="nt">&lt;data&gt;</span>
+    <span class="nt">&lt;totalrecords&gt;</span>50<span class="nt">&lt;/totalrecords&gt;</span>
+    <span class="nt">&lt;fields&gt;</span>
+        <span class="nt">&lt;field&gt;</span>
+            <span class="nt">&lt;order&gt;</span>1<span class="nt">&lt;/order&gt;</span>
+            <span class="nt">&lt;name&gt;</span>field_1<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;description&gt;</span>Description field 1<span class="nt">&lt;/description&gt;</span>
+            <span class="nt">&lt;length&gt;</span>10<span class="nt">&lt;/length&gt;</span>
+            <span class="nt">&lt;type&gt;</span>ALPHA<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;genproperties&gt;</span>
+                <span class="nt">&lt;valuepresence&gt;</span>always<span class="nt">&lt;/valuepresence&gt;</span> 
+                <span class="c">&lt;!-- always/ random / absent --&gt;</span>
+                <span class="nt">&lt;datalength&gt;</span>variable<span class="nt">&lt;/datalength&gt;</span> 
+                <span class="c">&lt;!-- none/full/variable --&gt;</span>
+            <span class="nt">&lt;/genproperties&gt;</span> 
+        <span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field&gt;</span>
+            <span class="nt">&lt;order&gt;</span>2<span class="nt">&lt;/order&gt;</span>
+            <span class="nt">&lt;name&gt;</span>field_2<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;description&gt;</span>Description field 2<span class="nt">&lt;/description&gt;</span>
+            <span class="nt">&lt;length&gt;</span>10<span class="nt">&lt;/length&gt;</span>
+            <span class="nt">&lt;type&gt;</span>ALPHANUM<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;genproperties&gt;</span>
+                <span class="nt">&lt;valuepresence&gt;</span>random<span class="nt">&lt;/valuepresence&gt;</span> 
+                <span class="nt">&lt;datalength&gt;</span>full<span class="nt">&lt;/datalength&gt;</span> 
+            <span class="nt">&lt;/genproperties&gt;</span> 
+        <span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field&gt;</span>
+            <span class="nt">&lt;order&gt;</span>3<span class="nt">&lt;/order&gt;</span>
+            <span class="nt">&lt;name&gt;</span>field_3<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;description&gt;</span>Description field 3<span class="nt">&lt;/description&gt;</span>
+            <span class="nt">&lt;length&gt;</span>10<span class="nt">&lt;/length&gt;</span>
+            <span class="nt">&lt;type&gt;</span>DOMAIN_YES_NO<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;genproperties&gt;</span>
+                <span class="nt">&lt;valuepresence&gt;</span>random<span class="nt">&lt;/valuepresence&gt;</span> 
+            <span class="nt">&lt;/genproperties&gt;</span> 
+        <span class="nt">&lt;/field&gt;</span>        
+        <span class="nt">&lt;field&gt;</span>
+            <span class="nt">&lt;order&gt;</span>4<span class="nt">&lt;/order&gt;</span>
+            <span class="nt">&lt;name&gt;</span>field_4<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;description&gt;</span>Description field 4<span class="nt">&lt;/description&gt;</span>
+            <span class="nt">&lt;length&gt;</span>10<span class="nt">&lt;/length&gt;</span>
+            <span class="nt">&lt;type&gt;</span>DOMAIN_GENDER<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;genproperties&gt;</span>
+                <span class="nt">&lt;valuepresence&gt;</span>random<span class="nt">&lt;/valuepresence&gt;</span> 
+            <span class="nt">&lt;/genproperties&gt;</span> 
+        <span class="nt">&lt;/field&gt;</span>                
+        <span class="nt">&lt;field&gt;</span>
+            <span class="nt">&lt;order&gt;</span>5<span class="nt">&lt;/order&gt;</span>
+            <span class="nt">&lt;name&gt;</span>field_5<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;description&gt;</span>Description field 5<span class="nt">&lt;/description&gt;</span>
+            <span class="nt">&lt;length&gt;</span>10<span class="nt">&lt;/length&gt;</span>
+            <span class="nt">&lt;type&gt;</span>NUM<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;genproperties&gt;</span>
+                <span class="nt">&lt;valuepresence&gt;</span>random<span class="nt">&lt;/valuepresence&gt;</span> 
+            <span class="nt">&lt;/genproperties&gt;</span> 
+        <span class="nt">&lt;/field&gt;</span>                        
+    <span class="nt">&lt;/fields&gt;</span>
+<span class="nt">&lt;/data&gt;</span>
+</pre>
+</div>
+
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/maachou">maachou</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
